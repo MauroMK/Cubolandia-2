@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Rigidbody playerRb;
-
-    public float forwardForce = 2000f;
+    public float horizontalForce= 1000f;
+    public Rigidbody playerRB;
 
     void Start()
     {
@@ -16,6 +15,15 @@ public class PlayerController : MonoBehaviour
     
     void FixedUpdate()
     {
-        playerRb.AddForce(0, 0, forwardForce * Time.deltaTime);
+        if (Input.GetKey("d"))
+        {
+            playerRB.AddForce(horizontalForce * Time.deltaTime, 0, 0);
+        }
+
+        if (Input.GetKey("a"))
+        {
+            playerRB.AddForce(-horizontalForce * Time.deltaTime, 0, 0);
+        }
+
     }
 }
